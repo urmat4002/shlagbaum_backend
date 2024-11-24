@@ -1,12 +1,15 @@
 const WebSocket = require('ws')
 const {v4: uuidv4} = require('uuid')
-let leightIsOn = 'off'
 
-const wss = new WebSocket.Server({port: 8000})
+let leightIsOn = 'off'
+const PORT = process.env.PORT || 8000
+
+const wss = new WebSocket.Server({port: PORT})
 const clients = {}
 
 wss.on('connection', (ws) => {
   console.log(Object.keys(clients).length)
+  console.log(`port open on: ${PORT}`)
   const id = uuidv4()
   clients[id] = ws
   ws.send(leightIsOn)

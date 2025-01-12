@@ -9,7 +9,7 @@ const clients = {}
 
 wss.on('connection', (ws) => {
   console.log(Object.keys(clients).length)
-  console.log(`port open on: ${PORT}`)
+  console.log(`Port open on: ${PORT}`)
   const id = uuidv4()
   clients[id] = ws
   ws.send(leightIsOn)
